@@ -1,5 +1,5 @@
 import { Navbar, Nav, Container,NavDropdown } from 'react-bootstrap';
-
+import CartWidget from './components/Widget/CartWidget';
 
 const NavBar=()=>{
 return (
@@ -30,16 +30,6 @@ return (
     </Navbar>
 
     )
-}
-
-
-const CartWidget = () =>{
-    return (
-        <>
-        <img src="../assets/bill.png"  style={{height : 3 + 'em'}} alt="cart img" ></img>
-        </>
-    )
-
 }
 
 export default NavBar;
