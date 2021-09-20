@@ -1,14 +1,7 @@
 import { Card, CardGroup} from 'react-bootstrap';
-import ItemCount from '../Buttons/ItemCount'
-import {useState} from 'react'
+import ItemCount, {count} from '../Buttons/ItemCount'
 
-function ItemListContainer(props) {
-    console.log('Hello world')
-    const [count] = useState(0)
-    console.log(count)
-    const stock = 2 
-   
-
+function ItemListContainer(props) { 
     return (
         <>
         <h1>Nuestros Productos</h1>
@@ -25,7 +18,7 @@ function ItemListContainer(props) {
                 It can be accompanied by memory loss, disorientation, or the inability to think quickly. Confusion can increase
                  slowly over time or come on abruptly, depending upon the cause.
                 </Card.Text>
-                <ItemCount count={count} stock={stock} />
+                <ItemCount />
             </Card.Body>
         </Card>
         </CardGroup>

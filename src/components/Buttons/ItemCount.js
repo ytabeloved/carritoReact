@@ -1,11 +1,14 @@
 import { Button} from 'react-bootstrap';
 import {useState} from 'react'
 
-function ItemCount(props) {
-    var [setCount] = useState(0)
+var [count, setCount] = [];
 
 
-    const resta = (count) => {
+function ItemCount() {
+    [count, setCount] = useState(0)
+    let stock = 10;
+
+    const resta = () => {
         if(count <= 0){
             console.log("paso")
         }
@@ -15,7 +18,7 @@ function ItemCount(props) {
         }
     }
 
-    const addItem = (stock, count) =>{
+    const addItem = (stock) =>{
         if(stock <= 0){
             console.log("no hay stock suficiente")
         }
@@ -27,8 +30,8 @@ function ItemCount(props) {
 
     return (
         <>
-        <Button onClick={resta({props.count})} variant="primary">-</Button>
-        <Button onClick={addItem({props.stock}, {props.count})} variant="primary">+</Button>
+        <Button onClick={resta(count)} variant="primary">-</Button>
+        <Button onClick={addItem(stock, count)} variant="primary">+</Button>
         </>
     )
 
@@ -36,3 +39,4 @@ function ItemCount(props) {
 }
 
 export default ItemCount;
+export {count};
