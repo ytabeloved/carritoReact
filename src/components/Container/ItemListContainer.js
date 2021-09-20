@@ -10,7 +10,7 @@ function ItemListContainer(props) {
         <div className="container">
         <CardGroup>
         <Card style={{ width: '18rem' }}>
-            <Card.Img variant="top" src="https://picsum.photos/seed/picsum/200/" />
+            <Card.Img variant="top" src="" />
             <Card.Body>
                 <Card.Title>Confusion</Card.Title>
                 <Card.Text>
