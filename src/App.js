@@ -2,21 +2,20 @@ import NavBar from './components/navbar';
 import ItemListContainer from './components/Container/ItemListContainer';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import {useState} from 'react'
 
 
 
 function App() {
-  console.log('Hello world')
 
 
   return (
     <div className="App">
       <NavBar/>
-      <header className="App-header">
-      <ItemListContainer saludo="karla"/>
+      <div className="container">
+      <ItemListContainer saludo="tu nombre"/> {/*despues veremos como te pide el nombre*/}
 
-      </header>
+      </div>
     </div>
   );
 }
