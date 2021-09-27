@@ -3,7 +3,7 @@ function CartWidget() {
     
     return (
         <>
-        <img src="../assets/bill.png"  style={{height : 3 + 'em'}} alt="cart img" ></img>
+        <img src='/assets/shopping-bag-512.png'  style={{height : 2 + 'em'}} alt="cart img" />
         </>
     )
 

@@ -1,0 +1,17 @@
+.linkNavbar{
+    text-decoration: none;
+    color: rgba(255,255,255,.55);
+}
+
+.linkNavbar:hover{
+    color:rgba(255,255,255,.75)
+}
+
+.insideLinkNavbar{
+    text-decoration: none;
+    color: black;
+}
+
+.insideLinkNavbar:hover{
+    color:grey;
+}
