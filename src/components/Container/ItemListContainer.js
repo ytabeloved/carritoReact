@@ -1,15 +1,37 @@
-import ItemCard from '../Product/Item'
+import React from 'react'
+import { useState, useEffect } from 'react'
+import ItemList from '../ItemList/ItemList'
+import { getProducts } from '../../products'
+import { useParams } from 'react-router-dom'
+import './ItemListContainer.css'
 
-function ItemListContainer(props) { 
+
+const ItemListContainer = ()=> {
+    const [products, setProducts] = useState([])
+    const {categoryid} = useParams()
+    const [loading, setLoading] = useState(true)
+    
+    useEffect(() => {
+        const list = getProducts(categoryid)
+        list.then(list => {
+            setProducts(list)
+            setLoading(false)
+        })
+
+        return (() => {
+            setProducts([])
+            setLoading(true)
+        })
+
+    }, [categoryid])
+
+
     return (
-        <>
-        <h1>Nuestros Productos</h1>
-        <p>hola {props.saludo}</p>
-        <div className="container">
-            <ItemCard name='item test' />
+        <div className="ItemListContainer" >
+             { loading ? "Loading.." : <ItemList products={products}/> }
         </div>
-        </>
-    )
+    )    
+    
 }
 
-export default ItemListContainer;
+export default ItemListContainer

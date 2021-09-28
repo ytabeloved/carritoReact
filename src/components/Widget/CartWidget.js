@@ -1,9 +1,11 @@
+import './CartWidget.css';
 
-function CartWidget() {
+const CartWidget = (props)=> {
     
     return (
         <>
         <img src='/assets/shopping-bag-512.png'  style={{height : 2 + 'em'}} alt="cart img" />
+        {props.quantity}
         </>
     )
 

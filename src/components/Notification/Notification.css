@@ -1,0 +1,12 @@
+   
+.error {
+    color: red;
+}
+
+.success {
+    color: green;
+}
+
+.errorFontSize {
+    font-size: 50px;
+}
