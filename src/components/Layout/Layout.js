@@ -24,7 +24,7 @@ export const Layout = () => {
   useEffect(() => {
     setTimeout(() => {
       setUser('Bucky')
-    }, 5000)
+    }, 1000)
   }, [])
 
 
@@ -36,20 +36,18 @@ export const Layout = () => {
           <Notification />
             <Switch>
             <Route exact path="/home" component={Home} />
-            <Route exact path='/'>
-                <ItemListContainer />
-              </Route>
-              <Route path='/category/:categoryid'>
+            <Route exact path='/' component={Home} />
+            <Route path='/category/:categoryid'>
                 <ItemListContainer />
               </Route>
               <Route path='/item/:itemid'>
                 <ItemDetailContainer productsAdded={cartProducts} addProdFunction={setCartProduct}/>
               </Route>
               <Route path='/cart'>
-                   {
-                    user                      
-                      ?(user && cartProducts.length > 0) &&
-                      <Cart productsAdded={cartProducts} addProdFunction={setCartProduct}/>
+              {console.log({user})}
+                   {                   
+                    user === 'Bucky'                      
+                      ?<Cart productsAdded={cartProducts} addProdFunction={setCartProduct}/>
                       :<Alert variant="danger" >
                       <Alert.Heading>Oh lo siento! no estas logueado</Alert.Heading>
                       <Link to='/login'><Button variant="outline-dark" >Login</Button></Link>
