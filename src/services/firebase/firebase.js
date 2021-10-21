@@ -2,6 +2,7 @@ import * as firebase from 'firebase/app';
 import {getFirestore} from 'firebase/firestore';
 
 
+
 const firebaseConfig = {
     apiKey: "AIzaSyDbN9nt5pkxIIcR8UtaXIhsVd_AyDscm70",
     authDomain: "react-carrito-5d4ca.firebaseapp.com",
@@ -18,3 +19,5 @@ export const getFirebase = () => {
 }
 
 export const db = getFirestore(app)
+
+

@@ -11,7 +11,7 @@ const Item = ({ product }) => {
       <Card.Title className="ItemHeader">{product.name}</Card.Title>
       <Card.Text className="Info">
         <h6 className="Info">
-          {`Categoria: ${product.categoryId} `}
+          {`Categoria: ${product.category} `}
         </h6>
         <h6 className="Info">
           {`Precio: ${product.price} `}

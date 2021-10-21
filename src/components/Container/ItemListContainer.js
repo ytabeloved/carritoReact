@@ -31,6 +31,7 @@ const ItemListContainer = ()=> {
                 const products = querySnapshot.docs.map(doc => {
                     return { id: doc.id, ...doc.data()}
                 })
+                console.log(products)
                 setProducts(products)
             }).catch((error) => {
                 console.log('error searching item', error)
@@ -40,26 +41,7 @@ const ItemListContainer = ()=> {
 
         }
     }, [categoryid])
-
-
-    
-    /*useEffect(() => {
-        const list = getProducts(categoryid)
-        list.then(list => {
-            setProducts(list)
-            setLoading(false)
-        })
-
-        return (() => {
-            setProducts([])
-            setLoading(true)
-        })
-
-    }, [categoryid])*/
-
-   
-
-   
+  
 
     return (
         <div className="ItemListContainer" >

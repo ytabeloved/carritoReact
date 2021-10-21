@@ -25,7 +25,7 @@ const ItemDetail = ({ product, productsAdded, addProdFunction }) => {
           </Card.Text>
         </Card.Body>
         <ListGroup className="list-group-flush">
-           <ListGroupItem>{`Categoria: ${product.categoryId} `}</ListGroupItem>
+           <ListGroupItem>{`Categoria: ${product.category} `}</ListGroupItem>
            <ListGroupItem>{`Precio: ${product.price} `}</ListGroupItem>
            <ListGroupItem>{`Stock: ${product.stock} `}</ListGroupItem>
         </ListGroup>
