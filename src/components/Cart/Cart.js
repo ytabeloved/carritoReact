@@ -66,7 +66,7 @@ const Cart = () => {
                 <div>
                     <h4>Telefono: {contact.phone}</h4>
                     <h4>Direccion: {contact.address}</h4>
-                    <h4>Comentario: {contact.address}</h4>
+                    <h4>Comentario: {contact.comment}</h4>
                     <Button variant="outline-success" onClick={() => setContact({ phone: '', address: '', comment: ''})} className='Button' > Borrar datos de contacto</Button>
                 </div>    
             }
