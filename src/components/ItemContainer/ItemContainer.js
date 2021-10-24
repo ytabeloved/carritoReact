@@ -2,35 +2,32 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ItemDetail from '../ItemDetail/ItemDetail'
 import './ItemContainer.css'
-import {db} from '../../services/firebase/firebase'
-import {doc, getDoc} from 'firebase/firestore'
+import {getProductById} from '../../services/firebase/firebase'
 
-const ItemDetailContainer = ({ productsAdded, addProdFunction }) => {
 
+const ItemDetailContainer = () => {
     const [product, setProduct] = useState(undefined)
     const [loading, setLoading] = useState(true)
-    const {itemid} = useParams()
+    const { itemid } = useParams()
     
     useEffect(() => {
-
         setLoading(true)
-        getDoc(doc(db, 'items' , itemid)).then((querySnapshot) =>{
-            console.log('no mames' ,{id: querySnapshot.id, ...querySnapshot.data()})
-            const product = {id: querySnapshot.id, ...querySnapshot.data()}
+        getProductById(itemid).then(product => {
             setProduct(product)
         }).catch((error) => {
-            console.log('error searching motherfucker items' , error)
-        }).finally(() =>{
+            console.log(error)
+        }).finally(() => {
             setLoading(false)
         })
-        return (()=>{
+        return (() => {
+            setLoading(true)
             setProduct(undefined)
         })
     },[itemid])
 
     return (
         <div className='ItemDetailContainer' >
-            {loading ? "Loading.." : <ItemDetail product={product} itemid={itemid} productsAdded={productsAdded} addProdFunction={addProdFunction}/>}    
+            {loading ? "Loading.." : <ItemDetail product={product}/>}    
         </div>
     )
 }

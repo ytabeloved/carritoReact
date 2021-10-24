@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react'
 
 const Context = React.createContext()
@@ -14,7 +13,7 @@ export const NotificationContextProvider = ({children}) => {
             setMessage('')
         }, 3000)
     }
-    console.log(children)
+
     return (
         <Context.Provider 
             value={{

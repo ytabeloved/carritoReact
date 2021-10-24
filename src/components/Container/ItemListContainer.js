@@ -3,8 +3,8 @@ import { useState, useEffect } from 'react'
 import ItemList from '../ItemList/ItemList'
 import { useParams } from 'react-router-dom'
 import './ItemListContainer.css'
-import {db} from '../../services/firebase/firebase';
-import { getDocs, collection, query, where } from 'firebase/firestore'
+import {getProducts} from '../../services/firebase/firebase';
+
 
 
 const ItemListContainer = ()=> {
@@ -12,34 +12,20 @@ const ItemListContainer = ()=> {
     const {categoryid} = useParams()
     const [loading, setLoading] = useState(true)
 
-    useEffect(()=>{
-        if(!categoryid){
-            setLoading(true)
-            getDocs(collection(db, 'items')).then((querySnapshot) => {
-                const products = querySnapshot.docs.map(doc => {
-                    return { id: doc.id, ...doc.data()}
-                })
-                setProducts(products)
-            }).catch((error) => {
-                console.log('error searching item fml!!', error)
-            }).finally(()=>{
-                setLoading(false)
-            })
-        } else {
-            setLoading(true)
-            getDocs(query(collection(db, 'items'), where ('category', '==', categoryid))).then((querySnapshot)=> {
-                const products = querySnapshot.docs.map(doc => {
-                    return { id: doc.id, ...doc.data()}
-                })
-                console.log(products)
-                setProducts(products)
-            }).catch((error) => {
-                console.log('error searching item', error)
-            }).finally(() => {
-                setLoading(false)
-            })
+    useEffect(() => {
+        setLoading(true)
+        getProducts('category', '==', categoryid).then(products => {
+            setProducts(products)
+        }).catch((error) => {
+            console.log(error)
+        }).finally(() => {
+            setLoading(false)
+        })
 
-        }
+        return (() => {
+            setLoading(true)
+            setProducts([])
+        })
     }, [categoryid])
   
 

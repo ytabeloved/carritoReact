@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import ItemListContainer from '../Container/ItemListContainer'
 import ItemDetailContainer from '../ItemContainer/ItemContainer'
 import NavBar from '../Navbar/NavBar'
@@ -12,27 +12,30 @@ import { NotificationContextProvider } from '../../context/NotificationContext'
 import Home from "../Home/Home"; 
 import {Alert, Button} from 'react-bootstrap' 
 import {Link} from 'react-router-dom'  
+import { CartContextProvider } from '../../context/CartContext'
+import UserContext from '../../context/UserContext'
 
 
 
 export const Layout = () => {
-
+  const { user} = useContext(UserContext)
   const [cartProducts, setCartProduct] = useState([])
-  const [user, setUser] = useState([])
+ /* const [user, setUser] = useState([])*/
   
 
-  useEffect(() => {
+ /* useEffect(() => {
     setTimeout(() => {
       setUser('Bucky')
     }, 1000)
-  }, [])
+  }, [])*/
 
 
   return (
     <div className="App">
-      <NotificationContextProvider>      
+      <NotificationContextProvider>  
+      <CartContextProvider>    
         <BrowserRouter>
-            <NavBar categories={getCategories()} cartProducts={cartProducts}/>  
+            <NavBar/>  
           <Notification />
             <Switch>
             <Route exact path="/home" component={Home} />
@@ -46,7 +49,7 @@ export const Layout = () => {
               <Route path='/cart'>
               {console.log({user})}
                    {                   
-                    user === 'Bucky'                      
+                    user !== undefined                      
                       ?<Cart productsAdded={cartProducts} addProdFunction={setCartProduct}/>
                       :<Alert variant="danger" >
                       <Alert.Heading>Oh lo siento! no estas logueado</Alert.Heading>
@@ -63,7 +66,7 @@ export const Layout = () => {
                                    </Alert>} />
             </Switch>
         </BrowserRouter>
- 
+        </CartContextProvider>
       </NotificationContextProvider>
     </div>
   )
