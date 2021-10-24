@@ -8,6 +8,7 @@ import CartContext from '../../context/CartContext'
 import NotificationContext from '../../context/NotificationContext'
 import { createOrder } from '../../services/firebase/firebase'
 import { useHistory } from 'react-router'
+import { Button } from 'react-bootstrap'
 
 const Cart = () => {
     const [processingOrder, setProcessingOrder] = useState(false)
@@ -53,22 +54,23 @@ const Cart = () => {
 
     return ( 
         <div>
-            <h1>Cart</h1>
-            {(products.length > 0 && !processingOrder) && <h3>Total: ${getTotal()}</h3>}
-            {(!processingOrder && products.length > 0) && <button onClick={() => clearCart()} className="Button">Cancelar compra</button>}
-            {(!processingOrder && products.length > 0) && <button onClick={() => confirmOrder()} className="Button">Confirmar Compra</button>}
+            <h1>hola {user}! tienes en tu Carrito:</h1>
+            {(!processingOrder && products.length) > 0 && <Togglable buttonLabelShow={(contact.phone !== '' && contact.address !== '' && contact.comment !== '') ? 'Editar contacto' : 'Agregar contacto'} ref={contactFormRef}>
+                                                            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
+                                                          </Togglable> }
+            {!processingOrder ? <ItemList products={products} /> : 'Procesando Orden'}
+            {(products.length > 0 && !processingOrder) && <h3>y tu total es: ${getTotal()} pesos</h3>}
+            {(!processingOrder && products.length > 0) && <Button variant="outline-danger" onClick={() => clearCart()} className="Button">Cancelar compra</Button>}
+            {(!processingOrder && products.length > 0) && <Button variant="outline-secondary" onClick={() => confirmOrder()} className="Button">Confirmar Compra</Button>}
             {(!processingOrder && contact.phone !== '' && contact.address !== '' && contact.comment !== '') &&
                 <div>
                     <h4>Telefono: {contact.phone}</h4>
                     <h4>Direccion: {contact.address}</h4>
                     <h4>Comentario: {contact.address}</h4>
-                    <button onClick={() => setContact({ phone: '', address: '', comment: ''})} className='Button' style={{backgroundColor: '#db4025'}}>Borrar datos de contacto</button>
+                    <Button variant="outline-success" onClick={() => setContact({ phone: '', address: '', comment: ''})} className='Button' > Borrar datos de contacto</Button>
                 </div>    
             }
-            {(!processingOrder && products.length) > 0 && <Togglable buttonLabelShow={(contact.phone !== '' && contact.address !== '' && contact.comment !== '') ? 'Editar contacto' : 'Agregar contacto'} ref={contactFormRef}>
-                                                            <ContactForm toggleVisibility={contactFormRef} setContact={setContact} />
-                                                          </Togglable> }
-            {!processingOrder ? <ItemList products={products} /> : 'Procesando Orden'}
+           
         </div>
     )
 }

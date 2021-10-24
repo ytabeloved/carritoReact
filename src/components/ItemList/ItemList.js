@@ -5,7 +5,7 @@ import './ItemList.css'
 const ItemList = ({products}) => {
 
   if(products.length === 0) {
-    return <h3>No hay productos aun, espera el re-stock</h3>
+    return <h3>No hay productos aun, Revisa nuestras categorias disponibles</h3>
   } 
 
   return (

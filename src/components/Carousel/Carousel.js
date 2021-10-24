@@ -11,8 +11,8 @@ return (
       alt="Este proyecto"
     />
     <Carousel.Caption>
-      <h5>Este proyecto</h5>
-      <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+      <h5 className='Negativo'>Este proyecto</h5>
+      <p className='Negativo'>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
     </Carousel.Caption>
   </Carousel.Item>
   <Carousel.Item>

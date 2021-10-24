@@ -13,7 +13,7 @@ const Item = ({ product }) => {
     <Card.Img variant="top" src={product.img} alt={product.name} className="ItemImg" />
      <Card.Body>
       <Card.Title className="ItemHeader">{product.name}</Card.Title>
-      <Card.Text className="Info">
+      <Card.Text className="Info row">
         <h6 className="Info">
           {`Categoria: ${product.category} `}
         </h6>
@@ -26,10 +26,10 @@ const Item = ({ product }) => {
           </h6>
         }
         { product?.quantity 
-          ? <button onClick={() => removeProduct(product.id)} className="Button">Quitar del carrito</button> 
-          : <Link to={`/item/${product.id}`} className="Button">Comprar</Link> }
+          ? <div><Button variant="outline-danger" onClick={() => removeProduct(product.id)} className="Button">Quitar del carrito</Button></div> 
+          : <Button variant="outline-dark">{ !product.quantity && <Link to={`/item/${product.id}`} >Comprar</Link> }</Button> }
       </Card.Text>    
-      <Button variant="outline-dark">{ !product.quantity && <Link to={`/item/${product.id}`} >Comprar</Link> }</Button>
+      
      </Card.Body>
     </Card>
     

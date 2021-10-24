@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import './ContactForm.css'
+import { Button } from 'react-bootstrap'
 
 const ContactForm = ({ toggleVisibility, setContact }) => {
     const [phone, setPhone] = useState('')
@@ -23,7 +24,7 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
 
     return (
         <div className='ContactContainer'>
-          <div>Contacto</div>
+          <div className='Head'>Contacto</div>
           <form className='ContactForm' onSubmit={handleContactForm}>
             <label className='LabelContact'>Telefono:
               <input
@@ -49,7 +50,7 @@ const ContactForm = ({ toggleVisibility, setContact }) => {
                 onChange={({ target }) => setComment(target.value)}
               />
             </label>
-            <button className='Button' type='submit'>Confirmar</button>
+            <Button variant="outline-success" className='Button' type='submit'>Confirmar</Button>
           </form>
         </div>
       )
