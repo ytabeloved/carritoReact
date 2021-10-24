@@ -4,7 +4,6 @@ import CartWidget from '../Widget/CartWidget';
 import {Link, NavLink} from 'react-router-dom'
 import './NavBar.css'
 import UserContext from '../../context/UserContext'
-import CartContext from '../../context/CartContext';
 import NotificationContext from '../../context/NotificationContext'
 import { getCategories} from '../../services/firebase/firebase'
 
@@ -12,7 +11,6 @@ import { getCategories} from '../../services/firebase/firebase'
 const NavBar = () => {
   const [categories, setCategories] = useState()
   const { user, logout } = useContext(UserContext)
-  /*const { getQuantity } = useContext(CartContext)*/
   const { setNotification } = useContext(NotificationContext)
 
   useEffect(() => {

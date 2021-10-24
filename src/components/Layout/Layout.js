@@ -5,9 +5,7 @@ import NavBar from '../Navbar/NavBar'
 import Cart from '../Cart/Cart'
 import Notification from '../Notification/Notification'
 import Login from '../Login/login'
-import PrivateRoute from '../PrivateRoute/PrivateRoute'
 import {BrowserRouter, Switch, Route} from 'react-router-dom'
-import { getCategories } from '../../products'
 import { NotificationContextProvider } from '../../context/NotificationContext'
 import Home from "../Home/Home"; 
 import {Alert, Button} from 'react-bootstrap' 
@@ -16,19 +14,9 @@ import { CartContextProvider } from '../../context/CartContext'
 import UserContext from '../../context/UserContext'
 
 
-
 export const Layout = () => {
   const { user} = useContext(UserContext)
   const [cartProducts, setCartProduct] = useState([])
- /* const [user, setUser] = useState([])*/
-  
-
- /* useEffect(() => {
-    setTimeout(() => {
-      setUser('Bucky')
-    }, 1000)
-  }, [])*/
-
 
   return (
     <div className="App">

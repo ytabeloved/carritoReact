@@ -1,4 +1,12 @@
-# Getting Started with Create React App
+# Este proyecto fue echo para CoderHouse
+aunque lo estoy entregando puede pulirse mas, segui las guias del profesor (harto copy paste tambien de stack overflow)
+
+## Link del recirrido de la tienda
+
+[Google drive](https://drive.google.com/file/d/1fSUnChS87iZeBARdm3DyMmCj-mjWJWnd/view?usp=drivesdk)
+
+## Cosas tecnicas
+
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
